@@ -1,6 +1,7 @@
 const gridContainer = document.getElementById('grid-container');
 const play = document.getElementById('play');
 const difficulty = document.getElementById('select');
+let output = document.getElementById('output');
 
 const totBombe = 16;
 const bombe = [];
@@ -67,7 +68,11 @@ function getSquare(numero) {
     
     if (bombe.includes(this._sqID)) {
       this.classList.add('redbomb');
-      // return;
+      output.innerHTML = 
+      `
+      Hai trovato una bomba!<br>Il tuo punteggio è: 
+      `;
+      return;
     }
 
     // aggiungo la classe clicked allo square
@@ -96,3 +101,9 @@ function numRandom(parametro) {
 }
 
 
+// FUNZIONE STOP
+function stop(){
+  if (sq.includes('.redbomb')) {
+    
+  }
+}
