@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Bootstrap -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.css' integrity='sha512-VcyUgkobcyhqQl74HS1TcTMnLEfdfX6BbjhH8ZBjFU9YTwHwtoRtWSGzhpDVEJqtMlvLM2z3JIixUOu63PNCYQ==' crossorigin='anonymous'/>
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="assets/style/style.css">
+  
+</head>
+<body>
+
+  <header>
+
+    <div class="container d-flex  justify-content-between ">
+
+      <div class="d-flex align-items-center ">
+        <img src="assets/img/mobile-logo.png" alt="">
+        <h1>Campo minato</h1>
+      </div>
+
+      <div class="d-flex ">
+        <select id="select" class="form-select m-2 ">
+          <option selected>Seleziona il livello e clicca "Avvia"</option>
+          <option value="1">Facile</option>
+          <option value="2">Medio</option>
+          <option value="3">Difficile</option>
+        </select>
+        <button id="play" class="text-bg-success ">Avvia</button>
+      </div>
+    </div>
+  </header>
+  
+  <div class="main-wrapper d-flex justify-content-center align-items-center ">
+    <div id="grid-container" class="d-flex flex-wrap ">
+      <div class="square"></div>
+
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container d-flex align-items-center ">
+      <h3>Made with &hearts; by Davide</h3>
+    </div>
+  </footer>
+
+
+  <script src="assets/script/script.js"></script>
+</body>
+</html>

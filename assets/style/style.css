@@ -1,0 +1,59 @@
+body{
+  height: 100vh;
+}
+
+header{
+  background-color: white;
+}
+
+header img{
+  width: 70px;
+  height: 70px;
+}
+
+footer{
+  background-color: white;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+}
+
+.main-wrapper{
+  padding: 50px;
+  background-color: aquamarine;
+  /* height: 100%; */
+}
+
+#grid-container{
+  aspect-ratio: 1;
+  width: 700px;
+  background-color: brown;
+}
+
+.square{
+  width: calc(100% /10);
+  aspect-ratio: 1;
+  background-color: rgb(119, 194, 15);
+  color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.clicked{
+  background-color: lightblue;
+}
+
+.medio{
+  width: calc(100% / 9);
+  aspect-ratio: 1;
+}
+
+.difficile{
+  width: calc(100% / 7);
+  aspect-ratio: 1;
+}
