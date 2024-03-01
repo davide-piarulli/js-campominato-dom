@@ -80,13 +80,21 @@ function numRandom(parametro) {
   const bombe = [];
   let numeroBomba;
   
-  for (let i = 1; i <= totBombe; i++) {
+  // for (let i = 1; i <= totBombe; i++) {
+  //   numeroBomba = Math.floor(Math.random() * parametro) + 1;
+  //   if (!bombe.includes(numeroBomba)) {
+  //     bombe.push(numeroBomba);
+  //   }
+  //   myBomb.push(numeroBomba);
+
+  // }
+
+  while(bombe.length < totBombe){
     numeroBomba = Math.floor(Math.random() * parametro) + 1;
+
     if (!bombe.includes(numeroBomba)) {
       bombe.push(numeroBomba);
     }
-    myBomb.push(numeroBomba);
-
   }
 
   console.log(bombe);
