@@ -3,9 +3,7 @@ const play = document.getElementById('play');
 const difficulty = document.getElementById('select');
 
 const totBombe = 16;
-const myBomb = [];
-
-
+const bombe = [];
 let contatore;
 
 reset();
@@ -51,6 +49,7 @@ function start() {
 // RESET
 function reset() {
   gridContainer.innerHTML = '';
+  bombe.length = 0 ;
 }
 
 // CREAZIONE SQUARE
@@ -63,10 +62,14 @@ function getSquare(numero) {
   sq._sqID = numero;
   // al click di sq restituisci numero
   sq.addEventListener('click', function () {
-
-
     // restituisco l'ID in console
     console.log(this._sqID);
+    
+    if (bombe.includes(this._sqID)) {
+      this.classList.add('redbomb');
+      // return;
+    }
+
     // aggiungo la classe clicked allo square
     this.classList.add('clicked');
   });
@@ -77,17 +80,8 @@ function getSquare(numero) {
 
 // CREAZIONE NUMERI RANDOM
 function numRandom(parametro) {
-  const bombe = [];
+  // const bombe = [];
   let numeroBomba;
-  
-  // for (let i = 1; i <= totBombe; i++) {
-  //   numeroBomba = Math.floor(Math.random() * parametro) + 1;
-  //   if (!bombe.includes(numeroBomba)) {
-  //     bombe.push(numeroBomba);
-  //   }
-  //   myBomb.push(numeroBomba);
-
-  // }
 
   while(bombe.length < totBombe){
     numeroBomba = Math.floor(Math.random() * parametro) + 1;

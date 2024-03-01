@@ -48,6 +48,10 @@ footer{
   background-color: lightblue;
 }
 
+.redbomb{
+  background-color: red;
+}
+
 .medio{
   width: calc(100% / 9);
   aspect-ratio: 1;
