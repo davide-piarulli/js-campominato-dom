@@ -2,6 +2,10 @@ const gridContainer = document.getElementById('grid-container');
 const play = document.getElementById('play');
 const difficulty = document.getElementById('select');
 
+const totBombe = 16;
+
+let contatore;
+
 reset();
 
 
@@ -16,7 +20,8 @@ function start () {
   }else if (scelta == 3){
     numeriContati = 49;
   }
-
+  
+  numRandom(numeriContati);
   // ciclo con 100 ripetizioni
   for (let i = 1; i <= numeriContati; i++) {
 
@@ -28,6 +33,8 @@ function start () {
     } else if (scelta == 3){
       square.classList.add('difficile');
     }
+
+    // console.log(numRandom(numeriContati));
 
     // assegno square alla griglia
     gridContainer.append(square);
@@ -69,3 +76,19 @@ function getSquare(numero){
 
   return sq;
 }
+
+// CREAZIONE NUMERI RANDOM
+function numRandom(parametro) {
+  const bombe = [];
+  let numeroBomba;
+  
+  for (let i = 1; i <= totBombe; i++) {
+    numeroBomba = Math.floor(Math.random() * parametro ) + 1;
+    bombe.push(numeroBomba);
+  }
+
+console.log(bombe);
+
+}
+
+

@@ -40,3 +40,8 @@ FINE GIOCO
 - accendere tutte le bombe
 - congelo la griglia
 - stampo il messaggio finale con punteggio. Messaggio diverso se vince o perde.
+
+# Svolgimento
+1. creo una funzione genera bombe a cui passare il parametro della difficoltà scelta dall'utente.
+2. mi creo una funzione random a cui passo il valore massimo che puoi generare, il numero passato corrisponde all'indice dei miei square.
+3. creo un ciclo for che cicla 
