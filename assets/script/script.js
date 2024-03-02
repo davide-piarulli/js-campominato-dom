@@ -6,11 +6,13 @@ const bombe = [];
 const totBombe = 16;
 
 let output = document.getElementById('output');
-let contatore = 0;
-
+let score = 0;
+let numeriCliccati = 0;
+let numeriContati;
 
 reset();
 
+gridContainer.innerHTML = '<h1>Comincia la partita!</h1>';
 play.addEventListener('click', start);
 
 
@@ -19,11 +21,11 @@ play.addEventListener('click', start);
 // START
 function start() {
   reset();
-  const scelta = parseInt(difficulty.value);
+  const difficultyLevel = parseInt(difficulty.value);
   let numeriContati = 100;
-  if (scelta == 2) {
+  if (difficultyLevel == 2) {
     numeriContati = 81;
-  } else if (scelta == 3) {
+  } else if (difficultyLevel == 3) {
     numeriContati = 49;
   }
 
@@ -35,11 +37,11 @@ function start() {
   for (let i = 1; i <= numeriContati; i++) {
 
     // richiamo la funzione che crea il quadrato
-    const square = getSquare(i);
+    const square = createSquareElement(i);
 
-    if (scelta == 2) {
+    if (difficultyLevel == 2) {
       square.classList.add('medio');
-    } else if (scelta == 3) {
+    } else if (difficultyLevel == 3) {
       square.classList.add('difficile');
     }
 
@@ -52,35 +54,42 @@ function start() {
 function reset() {
   gridContainer.innerHTML = '';
   bombe.length = 0;
+  score = 0;
+  output.innerHTML = '';
 }
 
 // CREAZIONE SQUARE
-function getSquare(numero) {
-  // creo il DIV
+/**
+ * creo il DIV
+ * associo la classe square
+ * creo una proprietà custom dell'elemento HTML, creo un suo ID
+ * al click di sq restituisci numero
+ * restituisco l'ID in console
+ */
+function createSquareElement(numero) {
   const sq = document.createElement('div');
-  // associo la classe square
   sq.className = 'square';
-  // creo una proprietà custom dell'elemento HTML, creo un suo ID
   sq._sqID = numero;
-  // al click di sq restituisci numero
-  sq.addEventListener('click', function () {
-    // restituisco l'ID in console
-    console.log(this._sqID);
-
-   
-    if (bombe.includes(this._sqID)) {
-      this.classList.add('redbomb');
-      output.innerHTML = `Hai trovato una bomba!<br>Il tuo punteggio è: ${contatore} `;
-
-    } else {
-      contatore++;
-      console.log('il contatore e:', contatore);
-    }
-    // aggiungo la classe clicked allo square se non ci sono bombe
-    this.classList.add('clicked');
-  })
-
+  sq.addEventListener('click', handleSquareClick);
   return sq;
+}
+
+// CLICK DELLO SQUARE
+function handleSquareClick(event) {
+  const sqID = event.target._sqID;
+  console.log(sqID);
+
+  if (bombe.includes(sqID)) {
+    event.target.classList.add('redbomb');
+    output.innerHTML = `Hai trovato una bomba!<br>Il tuo punteggio è: ${score} `;
+  } else {
+    score++;
+    console.log('il contatore e:', score);
+    if (score === (numeriContati-bombe)) {
+      output.innerHTML = `Complimenti, hai vinto! Il tuo punteggio è: ${score}`;
+    }
+  }
+  event.target.classList.add('clicked');
 }
 
 // CREAZIONE NUMERI RANDOM
