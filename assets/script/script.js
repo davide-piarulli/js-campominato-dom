@@ -1,17 +1,22 @@
 const gridContainer = document.getElementById('grid-container');
 const play = document.getElementById('play');
 const difficulty = document.getElementById('select');
-let output = document.getElementById('output');
 
-const totBombe = 16;
 const bombe = [];
-let contatore;
+const totBombe = 16;
+
+let output = document.getElementById('output');
+let contatore = 0;
+
 
 reset();
 
-
 play.addEventListener('click', start);
 
+
+/**********FUNCTIONS **********/
+
+// START
 function start() {
   reset();
   const scelta = parseInt(difficulty.value);
@@ -26,7 +31,7 @@ function start() {
   numRandom(numeriContati);
 
 
-  // ciclo con 100 ripetizioni
+  // ciclo con 100/81/49 ripetizioni
   for (let i = 1; i <= numeriContati; i++) {
 
     // richiamo la funzione che crea il quadrato
@@ -38,19 +43,15 @@ function start() {
       square.classList.add('difficile');
     }
 
-
     // assegno square alla griglia
     gridContainer.append(square);
   };
 };
 
-
-/**********FUNCTIONS **********/
-
 // RESET
 function reset() {
   gridContainer.innerHTML = '';
-  bombe.length = 0 ;
+  bombe.length = 0;
 }
 
 // CREAZIONE SQUARE
@@ -65,30 +66,28 @@ function getSquare(numero) {
   sq.addEventListener('click', function () {
     // restituisco l'ID in console
     console.log(this._sqID);
-    
+
+   
     if (bombe.includes(this._sqID)) {
       this.classList.add('redbomb');
-      output.innerHTML = 
-      `
-      Hai trovato una bomba!<br>Il tuo punteggio è: 
-      `;
-      return;
+      output.innerHTML = `Hai trovato una bomba!<br>Il tuo punteggio è: ${contatore} `;
+
+    } else {
+      contatore++;
+      console.log('il contatore e:', contatore);
     }
-
-    // aggiungo la classe clicked allo square
+    // aggiungo la classe clicked allo square se non ci sono bombe
     this.classList.add('clicked');
-  });
-
+  })
 
   return sq;
 }
 
 // CREAZIONE NUMERI RANDOM
 function numRandom(parametro) {
-  // const bombe = [];
   let numeroBomba;
 
-  while(bombe.length < totBombe){
+  while (bombe.length < totBombe) {
     numeroBomba = Math.floor(Math.random() * parametro) + 1;
 
     if (!bombe.includes(numeroBomba)) {
@@ -97,13 +96,8 @@ function numRandom(parametro) {
   }
 
   console.log(bombe);
-
+  return bombe;
 }
 
 
 // FUNZIONE STOP
-function stop(){
-  if (sq.includes('.redbomb')) {
-    
-  }
-}
